@@ -1,0 +1,19 @@
+APPNAME = mymobileapp
+
+type = app
+profile = mobile-2.4
+
+USER_SRCS = src/main.cpp
+USER_DEFS =
+USER_INC_DIRS = inc
+USER_OBJS =
+USER_LIBS = sfml-main sfml-system sfml-window sfml-graphics sfml-audio sfml-network
+USER_EDCS =
+
+USER_INC_DIRS = $(SDK_PATH)/library/sfml/include
+USER_INC_DIRS_ABS = 
+
+USER_LIB_DIRS = $(SDK_PATH)/library/sfml/lib/mobile/$(TARGET_EMU_OR_DEV)
+USER_LIB_DIRS_ABS =
+
+USER_CPP_DEFS = __TIZEN__

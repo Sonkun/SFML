@@ -125,6 +125,19 @@ else()
     unset(ANDROID_NDK CACHE)
 endif()
 
+# Tizen options
+if(SFML_OS_TIZEN)
+    # split device type and version (mobile-x.y.z) and retrieve device type
+    string(REPLACE "-" ";" DEVICE_LIST ${TIZEN_DEVICE})
+    list(GET DEVICE_LIST 0 DEVICE_TYPE)
+
+    # we install libs in a subdirectories named after the device type and architecture (lib/mobile/emulator/*.so)
+    set(LIB_SUFFIX "/${DEVICE_TYPE}/${TIZEN_TARGET}")
+
+    # install everything in $TIZEN_STUDIO/library
+    set(CMAKE_INSTALL_PREFIX ${TIZEN_STUDIO}/library/sfml)
+endif()
+
 # define SFML_STATIC if the build type is not set to 'shared'
 if(NOT BUILD_SHARED_LIBS)
     add_definitions(-DSFML_STATIC)
@@ -197,7 +210,7 @@ if(SFML_OS_MACOSX)
         message(FATAL_ERROR "Only 64-bit architecture is supported")
         return()
     endif()
-        
+
     # configure Xcode templates
     set(XCODE_TEMPLATES_ARCH "\$(NATIVE_ARCH_ACTUAL)")
 endif()

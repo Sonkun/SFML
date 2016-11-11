@@ -51,6 +51,10 @@
 
     #include <SFML/Window/Android/SensorImpl.hpp>
 
+#elif defined(SFML_SYSTEM_TIZEN)
+
+    #include <SFML/Window/Tizen/SensorImpl.hpp>
+
 #endif
 
 

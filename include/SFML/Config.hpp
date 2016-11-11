@@ -76,6 +76,11 @@
         // Android
         #define SFML_SYSTEM_ANDROID
 
+    #elif defined(__TIZEN__)
+
+         // Tizen
+        #define SFML_SYSTEM_TIZEN
+
     #elif defined(__linux__)
 
          // Linux

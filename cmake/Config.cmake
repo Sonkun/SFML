@@ -22,6 +22,13 @@ elseif(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
         set(SFML_OS_ANDROID 1)
         # use the OpenGL ES implementation on Android
         set(OPENGL_ES 1)
+    elseif(TIZEN)
+        set(SFML_OS_TIZEN 1)
+        # use the OpenGL ES implementation on Tizen
+        set(OPENGL_ES 1)
+
+        # define macro to identify the OS (has to be client side)
+        add_definitions(-D__TIZEN__)
     else()
         set(SFML_OS_LINUX 1)
         # don't use the OpenGL ES implementation on Linux
@@ -114,7 +121,7 @@ else()
 endif()
 
 # define the install directory for miscellaneous files
-if(SFML_OS_WINDOWS OR SFML_OS_IOS)
+if(SFML_OS_WINDOWS OR SFML_OS_IOS OR SFML_OS_TIZEN)
     set(INSTALL_MISC_DIR .)
 elseif(SFML_OS_LINUX OR SFML_OS_FREEBSD OR SFML_OS_MACOSX)
     set(INSTALL_MISC_DIR share/SFML)
