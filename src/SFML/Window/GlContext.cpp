@@ -66,6 +66,11 @@
         #include <SFML/Window/iOS/EaglContext.hpp>
         typedef sf::priv::EaglContext ContextType;
 
+    #elif defined(SFML_SYSTEM_TIZEN)
+
+        #include <SFML/Window/Tizen/EvasContext.hpp>
+        typedef sf::priv::EvasContext ContextType;
+
     #else
 
         #include <SFML/Window/EglContext.hpp>

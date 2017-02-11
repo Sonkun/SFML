@@ -40,6 +40,8 @@
     #include <SFML/Window/iOS/InputImpl.hpp>
 #elif defined(SFML_SYSTEM_ANDROID)
     #include <SFML/Window/Android/InputImpl.hpp>
+#elif defined(SFML_SYSTEM_TIZEN)
+    #include <SFML/Window/Tizen/InputImpl.hpp>
 #endif
 
 

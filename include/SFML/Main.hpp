@@ -31,9 +31,9 @@
 #include <SFML/Config.hpp>
 
 
-#if defined(SFML_SYSTEM_IOS)
+#if defined(SFML_SYSTEM_IOS) || defined(SFML_SYSTEM_TIZEN)
 
-    // On iOS, we have no choice but to have our own main,
+    // On iOS and Tizen, we have no choice but to have our own main,
     // so we need to rename the user one and call it later
     #define main sfmlMain
 

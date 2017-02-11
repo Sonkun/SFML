@@ -37,6 +37,13 @@ elseif(SFML_OS_IOS)
 elseif(SFML_OS_ANDROID)
     set(CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH} "${PROJECT_SOURCE_DIR}/extlibs/headers")
     set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} "${PROJECT_SOURCE_DIR}/extlibs/libs-android/${ANDROID_ABI}")
+elseif(SFML_OS_TIZEN)
+    # split device type and version (mobile-x.y.z) and retrieve device type
+    string(REPLACE "-" ";" DEVICE_LIST ${TIZEN_DEVICE})
+    list(GET DEVICE_LIST 0 DEVICE_TYPE)
+
+    set(CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH} "${PROJECT_SOURCE_DIR}/extlibs/headers")
+    set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} "${PROJECT_SOURCE_DIR}/extlibs/libs-tizen/${DEVICE_TYPE}/${TIZEN_TARGET}")
 endif()
 
 # add the SFML sources path
@@ -50,7 +57,7 @@ set(LIBRARY_OUTPUT_PATH "${PROJECT_BINARY_DIR}/lib")
 
 # add the modules subdirectories
 add_subdirectory(System)
-if(SFML_OS_WINDOWS OR SFML_OS_ANDROID OR SFML_OS_IOS)
+if(SFML_OS_WINDOWS OR SFML_OS_ANDROID OR SFML_OS_IOS OR SFML_OS_TIZEN)
     add_subdirectory(Main)
 endif()
 add_subdirectory(Window)

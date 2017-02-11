@@ -58,6 +58,11 @@
     #include <SFML/Window/Android/WindowImplAndroid.hpp>
     typedef sf::priv::WindowImplAndroid WindowImplType;
 
+#elif defined(SFML_SYSTEM_TIZEN)
+
+    #include <SFML/Window/Tizen/WindowImplTizen.hpp>
+    typedef sf::priv::WindowImplTizen WindowImplType;
+
 #endif
 
 

@@ -40,7 +40,7 @@ set(SRC
     ${SRCROOT}/WindowImpl.hpp
     ${INCROOT}/WindowStyle.hpp
 )
-if(SFML_OPENGL_ES AND NOT SFML_OS_IOS)
+if(SFML_OPENGL_ES AND NOT (SFML_OS_IOS OR SFML_OS_TIZEN))
     list(APPEND SRC ${SRCROOT}/EGLCheck.cpp)
     list(APPEND SRC ${SRCROOT}/EGLCheck.hpp)
     list(APPEND SRC ${SRCROOT}/EglContext.cpp)
@@ -190,6 +190,27 @@ elseif(SFML_OS_ANDROID)
         ${SRCROOT}/Android/SensorImpl.cpp
     )
     source_group("android" FILES ${PLATFORM_SRC})
+elseif(SFML_OS_TIZEN)
+    set(PLATFORM_SRC
+        ${SRCROOT}/Tizen/LogStream.hpp
+        ${SRCROOT}/Tizen/LogStream.cpp
+        ${SRCROOT}/Tizen/ApplicationState.hpp
+        ${SRCROOT}/Tizen/ApplicationState.cpp
+        ${SRCROOT}/Tizen/EvasCheck.hpp
+        ${SRCROOT}/Tizen/EvasCheck.cpp
+        ${SRCROOT}/Tizen/EvasContext.hpp
+        ${SRCROOT}/Tizen/EvasContext.cpp
+        ${SRCROOT}/Tizen/WindowImplTizen.hpp
+        ${SRCROOT}/Tizen/WindowImplTizen.cpp
+        ${SRCROOT}/Tizen/VideoModeImpl.cpp
+        ${SRCROOT}/Tizen/InputImpl.hpp
+        ${SRCROOT}/Tizen/InputImpl.cpp
+        ${SRCROOT}/Tizen/JoystickImpl.hpp
+        ${SRCROOT}/Tizen/JoystickImpl.cpp
+        ${SRCROOT}/Tizen/SensorImpl.hpp
+        ${SRCROOT}/Tizen/SensorImpl.cpp
+    )
+    source_group("tizen" FILES ${PLATFORM_SRC})
 endif()
 
 # find external libraries

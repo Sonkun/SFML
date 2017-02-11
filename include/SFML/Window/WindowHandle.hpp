@@ -62,6 +62,11 @@ namespace sf
     // Window handle is ANativeWindow* (void*) on Android
     typedef void* WindowHandle;
 
+#elif defined(SFML_SYSTEM_TIZEN)
+
+    // Window handle is Evas_Object* (void*) on Tizen
+    typedef void* WindowHandle;
+
 #elif defined(SFML_DOXYGEN)
 
     // Define typedef symbol so that Doxygen can attach some documentation to it
@@ -88,6 +93,7 @@ namespace sf
 /// Mac OS X        | either \p NSWindow* or \p NSView*, disguised as \p void*
 /// iOS             | \p UIWindow*
 /// Android         | \p ANativeWindow*
+/// Tizen           | \p Evas_Object*
 ///
 /// \par Mac OS X Specification
 ///
